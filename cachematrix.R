@@ -1,8 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Functions that decorate a matrix with methods that allow caching its inverse.
+## First, call `makeCacheMatrix` to create a cached matrix.
+##Then, call `cacheSolve` on your cached matrix to get the inverse. 
+##The inverse calculation will only be executed once.
 
-## Write a short comment describing this function
-
+## call `makeCacheMatrix` on a matrix to get a cached matrix.
+## mat <- matrix( c(2, 4, 3, 1, 5, 7), nrow = 2, ncol = 2)
+## cm <- makeCacheMatrix(mat)
+##
+## Then, you can call `cm$get()` to get the original matrix.
 makeCacheMatrix <- function(storedMatrix = matrix()) {
     cachedInverse <- NULL
     set <- function(y) {
@@ -19,8 +24,8 @@ makeCacheMatrix <- function(storedMatrix = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## Invert a cachced matrix (created by the `makeCacheMatrix` function.)
+## `cacheSolve(cm)`
 cacheSolve <- function(cachedMatrix, ...) {
     ## Return a matrix that is the inverse of 'x'
     inverseMatrix <- cachedMatrix$getInverse()
